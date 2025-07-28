@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickCards Ghana - Buy Examination Result Checkers Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>QUICKCARDS GHANA</h1>
+                    <p class="company-tagline">By Lamstech Solutions</p>
+                </div>
+                <button class="steps-btn" onclick="openModal('instructionsModal')">
+                    HOW TO BUY CHECKERS
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Buy Examination Result Checkers Online</h2>
+                    <p>Purchase your WAEC, SHS and other examination result checkers instantly with mobile money payment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-grid">
+                <!-- WAEC Results Checker -->
+                <div class="service-card waec-card">
+                    <div class="service-icon">
+                        <div class="icon-placeholder">📋</div>
+                    </div>
+                    <h3>BUY</h3>
+                    <h4>WAEC RESULTS CHECKER</h4>
+                    <p>Buy online, pay with mobile money and print them instantly.</p>
+                    <button class="service-btn" onclick="openModal('waecModal')">
+                        Click here to buy
+                    </button>
+                </div>
+
+                <!-- SHS Placement Checker -->
+                <div class="service-card shs-card">
+                    <div class="service-icon">
+                        <div class="icon-placeholder">🎓</div>
+                    </div>
+                    <h3>BUY</h3>
+                    <h4>SHS PLACEMENT CHECKER</h4>
+                    <p>Buy SHS PLACEMENT checkers online, pay with mobile money and print them instantly.</p>
+                    <button class="service-btn" onclick="openModal('shsModal')">
+                        Click here to buy
+                    </button>
+                </div>
+
+                <!-- Retrieve Old Checkers -->
+                <div class="service-card retrieve-card">
+                    <div class="service-icon">
+                        <div class="icon-placeholder">🔍</div>
+                    </div>
+                    <h3>RETRIEVE YOUR CHECKERS</h3>
+                    <p>You can retrieve your purchased checkers using your unique PURCHASE REFERENCE CODE and phone number used for payment.</p>
+                    <button class="service-btn" onclick="openModal('retrieveModal')">
+                        Click here to retrieve
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UCC Admission Forms Section -->
+    <section class="ucc-section">
+        <div class="container">
+            <div class="ucc-card">
+                <h3>UNIVERSITY OF CAPE COAST ADMISSION FORMS</h3>
+                <p>Purchase UCC admission forms online with instant delivery</p>
+                <button class="service-btn" onclick="openModal('uccModal')">
+                    Buy UCC Forms
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Short Code Section -->
+    <section class="shortcode-section">
+        <div class="container">
+            <div class="shortcode-card">
+                <h2>SHORT CODE *920*44#</h2>
+                <p>Alternatively you can buy WAEC RESULTS CHECKERS or SHS PLACEMENT CHECKERS by simply dialing the short code *920*44#. The vouchers will be delivered instantly via SMS onto your phone</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>Phone:</strong> 0549616253</p>
+                <p><strong>Email:</strong> support@quickcardsgh.com</p>
+                <p><strong>WhatsApp:</strong> 0549616253</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 QuickCards Ghana | Powered by Lamstech Solutions</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    
+    <!-- WAEC Results Checker Modal -->
+    <div id="waecModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>WAEC RESULTS CHECKER</h3>
+                <span class="close" onclick="closeModal('waecModal')">&times;</span>
+            </div>
+            <form id="waecForm" class="modal-form">
+                <div class="form-group">
+                    <label for="waecType">SELECT TYPE</label>
+                    <select id="waecType" name="type" required>
+                        <option value="">select an option</option>
+                        <option value="2024-bece">2024 BECE</option>
+                        <option value="old-bece">OLD BECE</option>
+                        <option value="2024-wassce">2024 WASSCE</option>
+                        <option value="old-wassce">OLD WASSCE</option>
+                        <option value="ssce">SSCE</option>
+                        <option value="abce">ABCE</option>
+                        <option value="gbce">GBCE</option>
+                    </select>
+                    <span class="error-message" id="waecTypeError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="waecQuantity">SELECT QUANTITY</label>
+                    <select id="waecQuantity" name="quantity" required>
+                        <option value="">select an option</option>
+                        <option value="1">1 Checker @ Gh¢18 = Gh¢ 18</option>
+                        <option value="2">2 Checkers @ Gh¢18 = Gh¢ 36</option>
+                        <option value="3">3 Checkers @ Gh¢18 = Gh¢ 54</option>
+                        <option value="4">4 Checkers @ Gh¢18 = Gh¢ 72</option>
+                        <option value="5">5 Checkers @ Gh¢18 = Gh¢ 90</option>
+                        <option value="10">10 Checkers @ Gh¢16 = Gh¢ 160</option>
+                        <option value="15">15 Checkers @ Gh¢16 = Gh¢ 240</option>
+                        <option value="20">20 Checkers @ Gh¢16 = Gh¢ 320</option>
+                        <option value="30">30 Checkers @ Gh¢16= Gh¢ 480</option>
+                        <option value="50">50 Checkers @ Gh¢16 = Gh¢ 800</option>
+                        <option value="100">100 Checkers @ Gh¢15.5 = Gh¢ 1550</option>
+                        <option value="150">150 Checkers @ Gh¢15.5 = Gh¢ 2325</option>
+                        <option value="200">200 Checkers @ Gh¢15.5 = Gh¢ 3100</option>
+                    </select>
+                    <span class="error-message" id="waecQuantityError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="waecMomo">SELECT MOBILE MONEY OPTION</label>
+                    <select id="waecMomo" name="momo" required>
+                        <option value="">select an option</option>
+                        <option value="mtn">MTN</option>
+                        <option value="airtel">AIRTEL</option>
+                        <option value="tigo">TIGO</option>
+                        <option value="vodafone">VODAFONE</option>
+                    </select>
+                    <span class="error-message" id="waecMomoError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="waecPhone">ENTER MOMO PHONE NUMBER</label>
+                    <input type="tel" id="waecPhone" name="phone" placeholder="e.g. 0244xxxxxx" required>
+                    <span class="error-message" id="waecPhoneError"></span>
+                </div>
+
+                <button type="submit" class="submit-btn">Pay now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SHS Placement Checker Modal -->
+    <div id="shsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>2023 SHS-PLACEMENT CHECKER</h3>
+                <span class="close" onclick="closeModal('shsModal')">&times;</span>
+            </div>
+            <form id="shsForm" class="modal-form">
+                <div class="form-group">
+                    <label for="shsQuantity">SELECT QUANTITY</label>
+                    <select id="shsQuantity" name="quantity" required>
+                        <option value="">select an option</option>
+                        <option value="1">1 Checker @ Gh¢10 = Gh¢ 10</option>
+                        <option value="2">2 Checkers @ Gh¢10 = Gh¢ 20</option>
+                        <option value="3">3 Checkers @ Gh¢10 = Gh¢ 30</option>
+                        <option value="5">5 Checkers @ Gh¢7.5= Gh¢ 37.5</option>
+                        <option value="10">10 Checkers @ Gh¢7.5 = Gh¢ 75</option>
+                        <option value="20">20 Checkers @ Gh¢7.5 = Gh¢ 150</option>
+                        <option value="50">50 Checkers @ Gh¢7.5 = Gh¢ 375</option>
+                        <option value="100">100 Checkers @ Gh¢7.5 = Gh¢ 750</option>
+                        <option value="200">200 Checkers @ Gh¢7.5 = Gh¢ 1500</option>
+                    </select>
+                    <span class="error-message" id="shsQuantityError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="shsMomo">SELECT MOBILE MONEY OPTION</label>
+                    <select id="shsMomo" name="momo" required>
+                        <option value="">select an option</option>
+                        <option value="mtn">MTN</option>
+                        <option value="airtel">AIRTEL</option>
+                        <option value="tigo">TIGO</option>
+                        <option value="vodafone">VODAFONE</option>
+                    </select>
+                    <span class="error-message" id="shsMomoError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="shsPhone">MOMO PHONE NUMBER</label>
+                    <input type="tel" id="shsPhone" name="phone" placeholder="Momo phone number" required>
+                    <span class="error-message" id="shsPhoneError"></span>
+                </div>
+
+                <button type="submit" class="submit-btn">Pay now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- UCC Admission Forms Modal -->
+    <div id="uccModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>UNIVERSITY OF CAPE COAST ADMISSION FORMS</h3>
+                <span class="close" onclick="closeModal('uccModal')">&times;</span>
+            </div>
+            <form id="uccForm" class="modal-form">
+                <div class="form-group">
+                    <label for="uccFormType">SELECT FORM TYPE</label>
+                    <select id="uccFormType" name="formType" required>
+                        <option value="">select UCC ADMISSION FORMS</option>
+                        <option value="distance-undergrad">UCC DISTANCE UNDERGRADUATE= Gh¢225.00 + Gh¢6.3 online charge =Gh¢231.3</option>
+                        <option value="distance-postgrad">UCC DISTANCE POSTGRADUATE = Gh¢325.00 + Gh¢9.1 online charge=Gh¢334.1</option>
+                    </select>
+                    <span class="error-message" id="uccFormTypeError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="uccMomo">SELECT MOBILE MONEY OPTION</label>
+                    <select id="uccMomo" name="momo" required>
+                        <option value="">select an option</option>
+                        <option value="mtn">MTN</option>
+                        <option value="airtel">AIRTEL</option>
+                        <option value="tigo">TIGO</option>
+                        <option value="vodafone">VODAFONE</option>
+                    </select>
+                    <span class="error-message" id="uccMomoError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="uccPhone">MOMO PHONE NUMBER</label>
+                    <input type="tel" id="uccPhone" name="phone" placeholder="Momo phone number" required>
+                    <span class="error-message" id="uccPhoneError"></span>
+                </div>
+
+                <button type="submit" class="submit-btn">Pay now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Retrieve Checker Modal -->
+    <div id="retrieveModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>RETRIEVE YOUR CHECKERS</h3>
+                <span class="close" onclick="closeModal('retrieveModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>If you completed the mobile money payment successfully, then a PURCHASE REFERENCE CODE was sent to your phone via SMS. Please retrieve the reference code from your phone, enter it below along with your phone number to get your checker(s) now.</p>
+                
+                <form id="retrieveForm" class="modal-form">
+                    <div class="form-group">
+                        <label for="retrievePhone">MoMo Phone Number</label>
+                        <input type="tel" id="retrievePhone" name="phone" placeholder="enter MoMo Phone Number" required>
+                        <span class="error-message" id="retrievePhoneError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="retrieveId">Purchase Reference Code</label>
+                        <input type="text" id="retrieveId" name="referenceCode" placeholder="enter PURCHASE REFERENCE CODE (e.g., QCG1234567890)" required>
+                        <span class="error-message" id="retrieveIdError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="resendSms" name="resendSms"> 
+                            Resend checkers via SMS
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions Modal -->
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>INSTRUCTIONS</h3>
+                <span class="close" onclick="closeModal('instructionsModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="instructions-content">
+                    <h4>BUYING FROM OUR WEBSITE</h4>
+                    <ul>
+                        <li>Visit www.quickcardsgh.com</li>
+                        <li>Select the type of checker, quantity, provide your MoMo number for payment and click submit</li>
+                        <li>You will receive a payment prompt on your MoMo phone requesting authorization</li>
+                        <li>After successful payment authorization, the checkers are sent instantly via SMS to your phone</li>
+                        <li>You will also receive a unique PURCHASE REFERENCE CODE for future retrieval</li>
+                        <li>You can download a PDF receipt of your purchase</li>
+                        <li><strong>NOTE:</strong> You can retrieve your checkers later using your PURCHASE REFERENCE CODE and phone number. This is very useful if you lose your SMS or need to reprint.</li>
+                    </ul>
+                    
+                    <h4>USING OUR USSD SHORT-CODE</h4>
+                    <ul>
+                        <li>Dial *920*44# from your mobile money phone</li>
+                        <li>Select the type and quantity of checkers</li>
+                        <li>Confirm payment when prompted</li>
+                        <li>Checkers will be delivered instantly via SMS</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
