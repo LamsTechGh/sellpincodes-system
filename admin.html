@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - QuickCards Ghana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-card h3 {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .stat-card .value {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-card .change {
+            font-size: 0.875rem;
+            color: var(--accent-color);
+        }
+        
+        .section {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .section-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--light-color);
+        }
+        
+        .section-header h2 {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .section-content {
+            padding: 1.5rem;
+        }
+        
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .inventory-item {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        
+        .inventory-item .label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .inventory-item .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .upload-form {
+            display: grid;
+            gap: 1rem;
+            max-width: 500px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .upload-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .upload-btn:hover {
+            background: #1e40af;
+        }
+        
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .transactions-table th,
+        .transactions-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .transactions-table th {
+            background: var(--light-color);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .status-completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-failed {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>QuickCards Ghana - Admin Dashboard</h1>
+            <p>Inventory & Revenue Management System - Lamstech Solutions</p>
+        </div>
+        
+        <!-- Statistics Cards -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <h3>Total Revenue</h3>
+                <div class="value">Gh¢ 15,750.50</div>
+                <div class="change">All time earnings</div>
+            </div>
+            <div class="stat-card">
+                <h3>Available Cards</h3>
+                <div class="value">1,850</div>
+                <div class="change">580 sold</div>
+            </div>
+            <div class="stat-card">
+                <h3>Today's Revenue</h3>
+                <div class="value">Gh¢ 450.00</div>
+                <div class="change">8 transactions</div>
+            </div>
+            <div class="stat-card">
+                <h3>This Month</h3>
+                <div class="value">Gh¢ 8,250.75</div>
+                <div class="change">67 transactions</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Transactions</h3>
+                <div class="value">125</div>
+                <div class="change">118 completed</div>
+            </div>
+            <div class="stat-card">
+                <h3>SMS Sent</h3>
+                <div class="value">575</div>
+                <div class="change">568 successful</div>
+            </div>
+        </div>
+        
+        <!-- Inventory Management -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Inventory Management</h2>
+            </div>
+            <div class="section-content">
+                <div class="inventory-grid">
+                    <div class="inventory-item">
+                        <div class="label">WAEC Cards</div>
+                        <div class="value">1,200</div>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="label">SHS Cards</div>
+                        <div class="value">450</div>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="label">UCC Forms</div>
+                        <div class="value">200</div>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="label">Expired Cards</div>
+                        <div class="value">70</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Excel Upload Management -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Excel Upload Management</h2>
+            </div>
+            <div class="section-content">
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+                    Upload Excel files with Pin and Voucher columns to add new pincodes to inventory.
+                </p>
+                <div class="upload-form">
+                    <div class="form-group">
+                        <label for="serviceType">Service Type:</label>
+                        <select id="serviceType">
+                            <option value="1">WAEC Results Checker</option>
+                            <option value="2">SHS Placement Checker</option>
+                            <option value="3">UCC Admission Forms</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="examType">Exam Type (Optional):</label>
+                        <select id="examType">
+                            <option value="">Select exam type</option>
+                            <option value="1">2024 BECE</option>
+                            <option value="2">OLD BECE</option>
+                            <option value="3">2024 WASSCE</option>
+                            <option value="4">OLD WASSCE</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="excelFile">Upload Excel File (Pin, Voucher columns):</label>
+                        <input type="file" id="excelFile" accept=".xlsx,.xls,.csv">
+                    </div>
+                    <button class="upload-btn" onclick="uploadExcel()">Upload Pincodes</button>
+                    <div id="uploadStatus"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Transactions -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Recent Transactions</h2>
+            </div>
+            <div class="section-content">
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Reference Code</th>
+                            <th>Service</th>
+                            <th>Phone</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>QCG1234567890</td>
+                            <td>WAEC Results Checker</td>
+                            <td>0244123456</td>
+                            <td>Gh¢ 36.00</td>
+                            <td><span class="status-badge status-completed">completed</span></td>
+                            <td>Today</td>
+                        </tr>
+                        <tr>
+                            <td>QCG0987654321</td>
+                            <td>SHS Placement Checker</td>
+                            <td>0201987654</td>
+                            <td>Gh¢ 20.00</td>
+                            <td><span class="status-badge status-completed">completed</span></td>
+                            <td>Today</td>
+                        </tr>
+                        <tr>
+                            <td>QCG5555666677</td>
+                            <td>WAEC Results Checker</td>
+                            <td>0555123789</td>
+                            <td>Gh¢ 54.00</td>
+                            <td><span class="status-badge status-pending">pending</span></td>
+                            <td>Yesterday</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function uploadExcel() {
+            const fileInput = document.getElementById('excelFile');
+            const serviceType = document.getElementById('serviceType').value;
+            const statusDiv = document.getElementById('uploadStatus');
+            
+            if (!fileInput.files[0]) {
+                statusDiv.innerHTML = '<div class="error-message">Please select a file to upload.</div>';
+                return;
+            }
+            
+            // Simulate upload process
+            statusDiv.innerHTML = '<div style="color: var(--primary-color);">Uploading and processing file...</div>';
+            
+            setTimeout(() => {
+                const fileName = fileInput.files[0].name;
+                const mockResults = {
+                    successful: Math.floor(Math.random() * 100) + 50,
+                    failed: Math.floor(Math.random() * 10),
+                    total: 0
+                };
+                mockResults.total = mockResults.successful + mockResults.failed;
+                
+                statusDiv.innerHTML = `
+                    <div class="success-message">
+                        <h4>Upload Completed Successfully!</h4>
+                        <p><strong>File:</strong> ${fileName}</p>
+                        <p><strong>Total Records:</strong> ${mockResults.total}</p>
+                        <p><strong>Successfully Imported:</strong> ${mockResults.successful}</p>
+                        <p><strong>Failed:</strong> ${mockResults.failed}</p>
+                        <p>Pincodes have been added to inventory and are ready for sale.</p>
+                    </div>
+                `;
+                
+                // Reset form
+                fileInput.value = '';
+            }, 3000);
+        }
+        
+        // Auto-refresh stats every 30 seconds (in real implementation)
+        setInterval(() => {
+            console.log('Stats would be refreshed here in real implementation');
+        }, 30000);
+    </script>
+</body>
+</html>
